@@ -1,0 +1,10 @@
+71c4d3716ab565b42a86cd26ff7cecfb *DESCRIPTION
+18904efdfdd796b6cad20c8c66dd5cf5 *NAMESPACE
+b91f3a51b61ca63bc465e356cfc6bf0f *R/blobness3D.R
+536b798cc72ddfab0065788e59b8ef81 *R/gradient3D.R
+9b4b9f7ff8c77cad4472d029709096ae *R/hessian3D.R
+96f10251dce42b100728640b56fba039 *R/vesselness3D.R
+f6d8fb0f978dee7fa8a9a283c5154f7e *man/blobness3D.Rd
+b166ce76fa7eb671a2500f3acf376bab *man/gradient3D.Rd
+f296b77e41475d3ef2570e357b2567f6 *man/hessian3D.Rd
+fcbb45e8f4ba9c6441b4be67c53595f6 *man/vesselness3D.Rd
