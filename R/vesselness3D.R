@@ -9,6 +9,8 @@
 #' @param color a string specifying whether vessels will appear darker ("dark") or brighter ("bright") than their surroundings
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
+#' @param cores if parallel = TRUE, cores is an integer value that indicates how many cores
+#' the function should be run on
 #'
 #' @return A 3D volume of the Frangi vesselness scores.
 #' @examples \dontrun{
@@ -16,12 +18,12 @@
 #' epi <- readnii('path/to/epi')
 #' mask <- epi!=0
 #' veins <- vesselness3D(image = epi, mask = mask, radius = 1,
-#'                       color = "dark", parallel = TRUE) }
+#'                       color = "dark", parallel = TRUE, cores = 4) }
 #' @export
 #' @references A.F. Frangi, W.J. Niessen, K.L. Vincken, M.A. Viergever (1998). Multiscale vessel enhancement filtering. In Medical Image Computing and Computer-Assisted Intervention - MICCAI'98, W.M. Wells, A. Colchester and S.L. Delp (Eds.), Lecture Notes in Computer Science, vol. 1496 - Springer Verlag, Berlin, Germany, pp. 130-137.
-vesselness3D=function(image, mask, radius = 1, color = "dark", parallel = FALSE){
+vesselness3D=function(image, mask, radius = 1, color = "dark", parallel = FALSE, cores = 2){
 
-  eigvals=hessian3D(image,mask,radius,parallel)
+  eigvals=hessian3D(image,mask,radius,parallel,cores)
 
   print("Calculating vesselness measure")
   l1=eigvals$eigval1

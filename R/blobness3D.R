@@ -9,18 +9,21 @@
 #' Note that this value essentially serves as the scale of the blob objects
 #' @param parallel is a logical value that indicates whether the user's computer
 #' is Linux or Unix (i.e. macOS), and should run the code in parallel
+#' @param cores if parallel = TRUE, cores is an integer value that indicates how many cores
+#' the function should be run on
+#'
 #' @return A 3D volume of the volume ratio blobness scores.
 #' @examples \dontrun{
 #' library(neurobase)
 #' flair <- readnii('path/to/epi')
 #' mask <- flair!=0
 #' brightspots <- blobness3D(image = flair, mask = mask, radius = 5,
-#'                       color = "bright", parallel = TRUE) }
+#'                       color = "bright", parallel = TRUE, cores = 4) }
 #' @export
 #' @references C. Pierpaoli, P.J. Basser (1996). Toward a Quantitative Assessment of Diffusion Anisotropy. Magnetic Resonance in Medicine. 36, pp. 893-906.
-blobness3D=function(image, mask, radius = 5, color = "dark", parallel = FALSE){
+blobness3D=function(image, mask, radius = 5, color = "dark", parallel = FALSE, cores = 2){
 
-  eigvals=hessian3D(image,mask,radius,parallel)
+  eigvals=hessian3D(image,mask,radius,parallel,cores)
 
   print("Calculating blobness measure")
   l1=eigvals$eigval1

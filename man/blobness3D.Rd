@@ -4,7 +4,8 @@
 \alias{blobness3D}
 \title{3D Volume Blobness}
 \usage{
-blobness3D(image, mask, radius = 5, color = "dark", parallel = FALSE)
+blobness3D(image, mask, radius = 5, color = "dark", parallel = FALSE,
+  cores = 2)
 }
 \arguments{
 \item{image}{a 3D array or image of class \code{\link{nifti}}}
@@ -20,6 +21,9 @@ Note that this value essentially serves as the scale of the blob objects}
 
 \item{parallel}{is a logical value that indicates whether the user's computer
 is Linux or Unix (i.e. macOS), and should run the code in parallel}
+
+\item{cores}{if parallel = TRUE, cores is an integer value that indicates how many cores
+the function should be run on}
 }
 \value{
 A 3D volume of the volume ratio blobness scores.
@@ -33,7 +37,7 @@ library(neurobase)
 flair <- readnii('path/to/epi')
 mask <- flair!=0
 brightspots <- blobness3D(image = flair, mask = mask, radius = 5,
-                      color = "bright", parallel = TRUE) }
+                      color = "bright", parallel = TRUE, cores = 4) }
 }
 \references{
 C. Pierpaoli, P.J. Basser (1996). Toward a Quantitative Assessment of Diffusion Anisotropy. Magnetic Resonance in Medicine. 36, pp. 893-906.
